@@ -1,2 +1,7 @@
 #ignore node node_modules
 /node_modules
+
+
+
+#ignore zip files
+*.zip
