@@ -1,16 +1,23 @@
 const express = require('express');
 const app = express();
-const db = require('./db.js');
+const controller = require('./controller.js');
 const auth = require('./auth.js');
+const cors = require('cors');
+
+app.use(express.json());
+app.use(cors());
 
 app.get('/', (req, res) => {
-    return res.send({"respons":'Hello World!gdfgdfg'});
+    return res.send({
+        "respons": 'Hello World!gdfgdfg'
+    });
 });
 
-app.get('/members/:indexNum', db.getStudent);
+app.get('/members/:indexNum', controller.getStudent);
 
-// app.post('/login ', auth.login);
-app.get('/login-user ', auth.loginUser);
+app.post('/login',  auth.login);
+
+app.get('/members', controller.getAllStudents);
 
 app.get("/register", function(req, res) {
     return res.send({"response":'register'});
