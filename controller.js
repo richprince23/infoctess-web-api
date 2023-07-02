@@ -31,7 +31,7 @@ module.exports = {
             return res.status(200).json(results);
         });
     },
-    getAllStudents: function(req, res) {
+    getAllStudents:  function(req, res) {
         pool.query('SELECT * FROM members', function (error, results) {
             if (error) throw error;
             if (results.length == 0) {

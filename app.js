@@ -3,17 +3,18 @@ const app = express();
 const controller = require('./controller.js');
 const auth = require('./auth.js');
 const cors = require('cors');
+const verify = require("./middleware.js").getToken;
 
 app.use(express.json());
 app.use(cors());
 
-app.get('/', (req, res) => {
-    return res.send({
-        "respons": 'Hello World!gdfgdfg'
-    });
+// app.use(verify);
+app.get('/',  verify, function(req, res)  {
+ 
+return res.send({"response": "Done!"});
 });
 
-app.get('/members/:indexNum', controller.getStudent);
+app.get('/members/:indexNum',  controller.getStudent);
 
 app.post('/login',  auth.login);
 
