@@ -19,6 +19,8 @@ app.get('/members/:indexNum',  controller.getStudent);
 app.post('/login',  auth.login);
 
 app.get('/members', controller.getAllStudents);
+app.get('/members/level/:level', controller.getStudetsByLevel);
+app.get("/members/gender/:gender", controller.getStudentsByGender); 
 
 app.get("/register", function(req, res) {
     return res.send({"response":'register'});

@@ -40,9 +40,33 @@ module.exports = {
             return res.status(200).json(results);
             }
         });
-    }
-,   
-    
+    },
 
+    getStudentsByGender: function(req, res) {
+        const gender = req.params.gender;
+        pool.query("Select * from members where gender = '" + gender +"'" , function (error, results) {
+            if (error) throw error;
+            if (results.length == 0) {
+                return res.status(200).json([]);
+            } else { 
+            return res.status(200).json(results);
+            }
+        });
+    },
+
+    
+    getStudetsByLevel: function(req, res) {
+        const level = req.params.level;
+        pool.query("select * from members where level = '"+ level + "'", function (error, results) {
+            if (error) throw error;
+            if (results.length == 0) {
+                return res.status(200).json([]);
+            } else {
+            return res.status(200).json(results);
+            }
+        });
+    },
+
+    
 }
 
