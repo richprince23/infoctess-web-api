@@ -18,9 +18,10 @@ module.exports = {
 
     delStudent: function(req, res) {
         const id = req.params.indexNum;
-        pool.query('DELETE FROM members WHERE index_num = ?', [id], function (error, results) { 
-            if (error) throw error;
-            return res.status(200).json(results);
+        const email = req.params.email;
+        pool.query('select count(*) from members WHERE index_num = ? and email = ?', [id, email], function (error, results) { 
+            if (error) return res.sendFile(__dirname + "/failed.html");
+            return res.sendFile(__dirname + "/success.html");
         });
     },
 

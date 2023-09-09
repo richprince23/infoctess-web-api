@@ -21,9 +21,13 @@ app.post('/login',  auth.login);
 app.get('/members', controller.getAllStudents);
 app.get('/members/level/:level', controller.getStudetsByLevel);
 app.get("/members/gender/:gender", controller.getStudentsByGender); 
-
+app.post('/delete-account', controller.delStudent);
 app.get("/register", function(req, res) {
     return res.send({"response":'register'});
+});
+app.get("/request-delete", function(req, res) {
+    return res.sendFile(__dirname + "/request-delete.html");
+    // return res.sendFile("request-delete.html");
 });
 
 app.listen(3000, () => {
